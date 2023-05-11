@@ -1,0 +1,16 @@
+name: Docker Image CI
+on:
+  workflow_dispatch:
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set output  
+        id: vars
+        run: echo "tag=$(echo ${GITHUB_REF:10})" >> $GITHUB_OUTPUT
+      - name: Show version
+        run: echo "tag=${{ steps.vars.outputs.tag }}"
+        
